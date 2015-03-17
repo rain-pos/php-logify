@@ -1,0 +1,24 @@
+{
+    "name": "deseretdigital/logger",
+    "description": "PSR-3 Log Collector and Processor",
+    "type": "project",
+    "require": {
+        "psr/log": "1.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "H Hatfield",
+            "email": "hhatfield@deseretdigital.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DDM\\Logger\\": "src/"
+        }
+    }
+    
+}
