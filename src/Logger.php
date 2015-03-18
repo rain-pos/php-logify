@@ -11,7 +11,8 @@ namespace DDM\Logger;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
 
-class Logger extends AbstractLogger{
+class Logger extends AbstractLogger
+{
 
     private static $instance = null;
 
@@ -29,7 +30,8 @@ class Logger extends AbstractLogger{
     /**
      * Ensures use of the singleton pattern
      */
-    protected function __construct(){
+    protected function __construct()
+    {
 
     }
 
@@ -37,7 +39,8 @@ class Logger extends AbstractLogger{
      * Allows for resetting after tests.
      * Should not normally need to be called.
      */
-    public function tearDown(){
+    public function tearDown()
+    {
         self::$instance = null;
     }
 
@@ -48,7 +51,7 @@ class Logger extends AbstractLogger{
      */
     public static function getInstance()
     {
-        if(self::$instance === null){
+        if (self::$instance === null) {
             self::$instance = new Logger();
         }
 
@@ -58,10 +61,13 @@ class Logger extends AbstractLogger{
     /**
      * Add any PSR-3 Logger as a handler for a particular log level
      *
-     * @param LoggerInterface $handler
-     * @param $logLevel
+     * @param LoggerInterface $handler  handler to use
+     * @param string          $logLevel level to use it on
+     *
+     * @return null
      */
-    public static function addHandler(LoggerInterface $handler, $logLevel){
+    public static function addHandler(LoggerInterface $handler, $logLevel)
+    {
         $logger = self::getInstance();
         $logger->handlers[$logLevel][]=$handler;
     }
@@ -70,12 +76,13 @@ class Logger extends AbstractLogger{
      * Returns all handlers possibly filtered by log level
      *
      * @param null $logLevel
+     *
      * @return array
      */
     public function getHandlers($logLevel = null)
     {
         $handlers = $this->handlers;
-        if($logLevel){
+        if ($logLevel) {
             $handlers = $this->handlers[$logLevel];
         }
 
@@ -92,7 +99,7 @@ class Logger extends AbstractLogger{
      */
     public function log($level, $message, array $context = array())
     {
-        foreach($this->handlers[$level] as $handler){
+        foreach ($this->handlers[$level] as $handler) {
             $handler->log($level, $message, $context);
         }
     }
