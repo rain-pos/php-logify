@@ -9,12 +9,11 @@
 namespace DDM\Logger;
 
 use Psr\Log\AbstractLogger;
+use Psr\Log\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 
 class Logger extends AbstractLogger
 {
-
-    private static $instance = null;
 
     private $handlers = array(
         'emergency' => array(),
@@ -28,50 +27,46 @@ class Logger extends AbstractLogger
     );
 
     /**
-     * Ensures use of the singleton pattern
+     * constructor
      */
-    protected function __construct()
+    public function __construct()
     {
 
-    }
-
-    /**
-     * Allows for resetting after tests.
-     * Should not normally need to be called.
-     */
-    public function tearDown()
-    {
-        self::$instance = null;
-    }
-
-    /**
-     * Method to get singleton of Logger
-     *
-     * @return Logger
-     */
-    public static function getInstance()
-    {
-        if (self::$instance === null) {
-            self::$instance = new Logger();
-        }
-
-        return self::$instance;
     }
 
     /**
      * Add any PSR-3 Logger as a handler for a particular log level
      *
      * @param LoggerInterface $handler  handler to use
-     * @param string          $logLevel level to use it on
+     * @param string|array          $logLevel level to use it on
      *
      * @return null
      */
-    public static function addHandler(LoggerInterface $handler, $logLevel)
+    public function addHandler(LoggerInterface $handler, $userLogLevel)
     {
-        $logger = self::getInstance();
-        $logger->handlers[$logLevel][]=$handler;
+        if (!is_array($userLogLevel)) {
+            $userLogLevel = array($userLogLevel);
+        }
+        foreach ($userLogLevel as $logLevelString) {
+            $logLevel = $this->getLevel($logLevelString);
+            $this->handlers[$logLevel][] = $handler;
+        }
     }
 
+    /**
+     * @param $levelString string to be checked;
+     * @return mixed
+     */
+    protected function getLevel($levelString)
+    {
+        $levelToCheck = '\Psr\Log\LogLevel::' . strtoupper($levelString);
+        if (defined($levelToCheck)) {
+            return constant($levelToCheck);
+        }
+        throw new InvalidArgumentException(
+            'PSR-3 LogLevel required. ' . $levelString . ' given'
+        );
+    }
     /**
      * Returns all handlers possibly filtered by log level
      *
