@@ -84,7 +84,7 @@ class Logger extends AbstractLogger
         return $handlers;
     }
 
-   /**
+    /**
      * Runs all handlers associated with a given level.
      *
      * @param mixed $level
