@@ -1,5 +1,5 @@
 {
-    "name": "deseretdigital/logger",
+    "name": "deseretdigital/logify",
     "description": "PSR-3 Log Collector and Processor",
     "type": "project",
     "require": {
@@ -21,6 +21,8 @@
         "psr-4": {
             "DDM\\Logger\\": "src/"
         }
+    },
+    "provide": {
+        "psr/log-implementation": "~1.0"
     }
-    
 }
