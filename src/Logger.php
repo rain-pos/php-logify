@@ -6,7 +6,7 @@
  * Time: 3:23 PM
  */
 
-namespace DDM\Logger;
+namespace DDM\Logify;
 
 use Psr\Log\AbstractLogger;
 use Psr\Log\InvalidArgumentException;
