@@ -6,9 +6,9 @@
  * Time: 2:54 PM
  */
 
-namespace DDM\Logger\Tests;
+namespace DDM\Logify\Tests;
 
-use DDM\Logger\Logger;
+use DDM\Logify\Logger;
 use Psr\Log\LogLevel;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;

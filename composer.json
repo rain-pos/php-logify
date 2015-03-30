@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "DDM\\Logger\\": "src/"
+            "DDM\\Logify\\": "src/"
         }
     },
     "provide": {

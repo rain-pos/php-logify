@@ -6,9 +6,9 @@
  * Time: 10:22 PM
  */
 
-namespace DDM\Logger\Tests;
+namespace DDM\Logify\Tests;
 
-use DDM\Logger\Logger;
+use DDM\Logify\Logger;
 use Psr\Log\InvalidArgumentException;
 use Psr\Log\NullLogger;
 use Psr\Log\LogLevel;
