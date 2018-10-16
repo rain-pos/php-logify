@@ -6,9 +6,9 @@
  * Time: 2:54 PM
  */
 
-namespace DDM\Logify\Tests;
+namespace RainPos\Logify\Tests;
 
-use DDM\Logify\Logger;
+use RainPos\Logify\Logger;
 use Psr\Log\LogLevel;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;

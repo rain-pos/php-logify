@@ -6,7 +6,7 @@
  * Time: 10:22 PM
  */
 
-namespace DDM\Logify\Tests;
+namespace RainPos\Logify\Tests;
 
 use DDM\Logify\Logger;
 use Psr\Log\InvalidArgumentException;

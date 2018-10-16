@@ -3,11 +3,10 @@
     "description": "PSR-3 Log Collector and Processor",
     "type": "project",
     "require": {
-        "psr/log": "1.0.0"
+        "psr/log": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.5.0",
-        "codacy/coverage": "dev-master",
         "mockery/mockery": "0.9.2"
     },
     "license": "MIT",
@@ -19,7 +18,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "DDM\\Logify\\": "src/"
+            "RainPos\\Logify\\": "src/"
         }
     },
     "provide": {
