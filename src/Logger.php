@@ -52,6 +52,25 @@ class Logger extends AbstractLogger
             $this->handlers[$logLevel][] = $handler;
         }
     }
+    
+    /**
+     * Remove all handlers         
+     *
+     * @return null
+     */
+    public function removeHandlers()
+    {
+        $this->handlers = array(
+            'emergency' => array(),
+            'alert' => array(),
+            'critical' => array(),
+            'error' => array(),
+            'warning' => array(),
+            'notice' => array(),
+            'info' => array(),
+            'debug' => array(),
+        );
+    }
 
     /**
      * @param $levelString string to be checked;
